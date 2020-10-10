@@ -27,7 +27,7 @@ class ProductFactory extends Factory
             'brand_id' => $this->faker->numberBetween(1, 10),
             'category_id' => $this->faker->numberBetween(1, 10),
             'SKE' => $this->faker->lexify('???'),
-            'image' => $this->faker->imageUrl($width = 640, $height = 480, 'technics'),
+            'image' => $this->faker->imageUrl($width = 640, $height = 480, null),
         ];
     }
 }

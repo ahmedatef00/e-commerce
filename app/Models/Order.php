@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'cart',
+    ];
+    public function user() {
+        
+        return $this->belongsTo('App\User');
+    }
+   
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
 }

@@ -11,9 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
-
     <script src="https://kit.fontawesome.com/bcd3dd02f3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,8 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min/css') }} rel="stylesheet"/>
-
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -31,19 +29,47 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @if(auth()->user())
+                @if(auth()->user()->is_admin)
+                <a class="" href="{{ route('product.create') }}">
+                    Create Product
+                </a>
+                @endif
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                            <li class="nav-item">
+                                <a href="{{route('latestProducts')}}" class="nav-link">latest products</a>
+                            </li>
                     </ul>
+
+                    <form action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q"
+                                placeholder="Search products"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                        <a href="{{ route('cart.show')}}" class="nav-link">
+                            <span class="fas fa-shopping-cart">
+                                My Cart 
+                            </span>
+                        </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,17 +82,22 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    {{-- <a href="{{ route('order.index') }}" class="dropdown-item">Orders <i class="fas fa-grip-horizontal ml-2"></i></a> --}}
+                                    <div class="dropdown-divider"></div>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
+                                        <i class="fas fa-sign-out-alt ml-2"></i>
+                                        </a>
+                                        
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -81,5 +112,8 @@
             @yield('content')
         </main>
     </div>
+    @include('sweetalert::alert')
+
+    @yield('script')
 </body>
 </html>
