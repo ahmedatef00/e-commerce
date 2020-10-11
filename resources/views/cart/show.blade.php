@@ -28,7 +28,6 @@
                         <td>{{ $product->pivot->quantity }}</td>
                         <td> {{ $product->price * $product->pivot->quantity}} </td>
                         {{$sum += ($product->price * $product->pivot->quantity)}}
-                        {{-- <td><a href="{{route('product.show',['product'=>$product->id])}}" class="btn btn-secondary btn-sm">view</a> --}}
                         <td>
                             <form method="POST" action="{{route('cart.destroy',['product' => $product->id])}}">
                                 @csrf @method('delete')
@@ -44,7 +43,7 @@
                 </tbody>
             </table>
     <h3>Total : ${{$sum}}</h3>
-    {{-- <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"
+    <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"
                           action="{{ route('payment.paypal') }}">
                         @csrf
                         <p>
@@ -52,7 +51,7 @@
                         </p>
                         <button class="btn btn-primary" type="submit">Pay with PayPal</button>
                         </p>
-                    </form> --}}
+                    </form>
 
         </div>
 

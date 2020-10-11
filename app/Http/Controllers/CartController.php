@@ -30,7 +30,7 @@ class CartController extends Controller
     public function addProductToCart(Request $request)
     {
     
-        $userCart = Auth::user()->cart;
+        $userCart = Auth::user()->cart();
 
         // if user doesn't have a cart, create one
         if (!$userCart) {
