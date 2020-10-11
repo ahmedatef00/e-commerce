@@ -18,9 +18,10 @@
                 <div class="col-md-4">
                 
                     <div class="card mb-2">
-                            <img src="{{ $product->image }}" class="card-img-top" alt="...">
+                            <img src="{{ 'images/'.$product->image }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->title }}</h5>
+                                <h5 class="card-name">{{ $product->name }}</h5>
                                 <p class="card-text">{{$product->SKE}}</p>
                                 <form action="{{ route('cart.add', $product->id) }}" method="POST" class="cart">
                                     @csrf

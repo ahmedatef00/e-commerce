@@ -43,7 +43,7 @@ class HomeController extends Controller
         }
 
 
-        $latestProducts = Product::latest()->take(5)->get();
+        $latestProducts = Product::orderBy('id', 'desc')->take(5)->get();
         return view('latestProducts', compact('latestProducts'));
     }
 }

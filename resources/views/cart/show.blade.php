@@ -27,7 +27,6 @@
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
                         <td> {{ $product->price * $product->pivot->quantity}} </td>
-                        {{$sum += ($product->price * $product->pivot->quantity)}}
                         <td>
                             <form method="POST" action="{{route('cart.destroy',['product' => $product->id])}}">
                                 @csrf @method('delete')
