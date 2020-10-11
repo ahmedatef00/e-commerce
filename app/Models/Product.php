@@ -40,9 +40,9 @@ class Product extends Model
     }
     public function getImageAttribute()
     {
-        // if (!$this->attributes['image']) {
-        //     return 'https://picsum.photos/200/300';
-        // }
+        if (!$this->attributes['image']) {
+            return 'https://picsum.photos/200/300';
+        }
 
         return $this->attributes['image'];
     }

@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'latestProducts'])->name('home');
 Route::get('/latestProducts', [HomeController::class, 'latestProducts'])->name('latestProducts');
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::group(

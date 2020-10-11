@@ -129,7 +129,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        return redirect()->back();
+        return redirect()->route('product.index');
     }
 
     /**

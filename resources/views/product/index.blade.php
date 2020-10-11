@@ -24,9 +24,15 @@
                                 <form action="{{ route('cart.add', $product->id) }}" method="post" class="cart">
                                     @csrf
                                     <input type="hidden" value="{{$product->id}}" name="product_id">
-                                    <input type="submit" value="Buy">
+                                    <input type="submit" value="Buy" class="btn btn-primary">
                                   </form>
-                                                      <a href="{{ route('product.edit',$product)}}" class="btn btn-primary"> edit</a>
+                                 <br>
+                                  @if(auth()->user())
+                                  @if(auth()->user()->is_admin)
+                                  <a href="{{ route('product.edit',$product)}}" class="btn btn-primary"> edit</a>
+
+                                  @endif
+                                  @endif
                             </div>
                     </div>
                     

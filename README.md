@@ -40,4 +40,13 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+##### Run the project
 
+```
+php artisan serve
+```
+```
+You need to know that After Seeding DB all most of images will be broke because it is an external image from an external website
+But once You Create your product with it's image it will be good that's  all because the path of 'images'
+
+``

@@ -47,7 +47,12 @@
                                 <a href="{{route('latestProducts')}}" class="nav-link">latest products</a>
                             </li>
                     </ul>
-
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a href="{{route('product.index')}}" class="nav-link">all products</a>
+                        </li>
+                </ul>
+                    
                     <form action="/search" method="POST" role="search">
                         {{ csrf_field() }}
                         <div class="input-group">
