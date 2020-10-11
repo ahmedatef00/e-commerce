@@ -6,7 +6,6 @@
 
 
         <div class="container m-5">
-            dddddddddddddddddddddddd
             <table class="table table-sm">
                 <thead>
                     <tr>
@@ -15,6 +14,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Total</th>
+                        <th scope="col">sumOf</th>
                         <th colspan="2">Action</th>
 
                     </tr>
@@ -29,7 +29,7 @@
                         <td>{{ $product->pivot->quantity }}</td>
                         <td> {{ $product->price * $product->pivot->quantity}}
                         </td>
-                        {{$sum += ($product->price * $product->pivot->quantity)}}xxx
+                        {{$sum += ($product->price * $product->pivot->quantity)}}
                         <td>
                             <form method="POST" action="{{route('cart.destroy',['product' => $product->id])}}">
                                 @csrf @method('delete')
