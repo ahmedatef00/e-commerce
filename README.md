@@ -45,8 +45,19 @@ php artisan db:seed
 ```
 php artisan serve
 ```
-```
 You need to know that After Seeding DB all most of images will be broke because it is an external image from an external website
 But once You Create your product with it's image it will be good that's  all because the path of 'images'
-
 ``
+
+##### seed User the project
+
+```
+run php artisan make:seed --UserSeeder
+ahmedatef62437@gmail.com
+password
+```
+##### seed products the project
+```
+php artisan db:seed
+As I said Images in seed are broken But in All Crud Operation it works very well
+```
