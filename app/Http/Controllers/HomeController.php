@@ -30,10 +30,12 @@ class HomeController extends Controller
     public function search()
     {
         $q = request('q');
-        $products = Product::where('name', 'LIKE', '%' . $q . '%')->orWhere('SKE', 'LIKE', '%' . $q . '%')->get();
+        $products = Product::where('name', 'LIKE', '%' . $q . '%')
+            ->orWhere('SKE', 'LIKE', '%' . $q . '%')
+            ->get();
         if (count($products) > 0)
             return view('product.index', compact('products'));
-        else return view('welcome')->with('message','Try to search again !');
+        else return view('welcome')->with('message', 'Try to search again !');
     }
     public function latestProducts()
     {
